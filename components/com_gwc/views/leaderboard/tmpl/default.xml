@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Leaderboards" option="">
+		<help
+			key = ""
+		/>
+		<message>
+			
+		</message>
+	</layout>
+	
+	<view title="CAST_VIEW" hidden="true">
+		<message></message>
+	</view>
+	<view title="leaderboards"><message>Leaderboards</message></view>
+
+	<!-- Add fields to the request variables for the layout. -->
+	<fields name="request">
+		<fieldset name="basic"
+				label="">
+			<field
+				name="layout"
+				type="hidden"
+				label="Select Layout"
+				value="default"
+				/>
+			<field
+				name="type"
+				type="radio"
+				class="btn-group"
+				label="Type"
+				default="1"
+				>
+				<option value="1">Business</option>
+				<option value="2">Nonprofit</option>
+				<option value="3">University</option>
+				<option value="4">K-12</option>
+				<option value="5">Observer</option>
+				<option value="6">Municipal</option>
+			</field>
+			<field
+				name="size"
+				type="radio"
+				class="btn-group"
+				label="Size"
+				default="1"
+				>
+				<option value="1">Large</option>
+				<option value="2">Medium</option>
+				<option value="3">Small</option>
+				<option value="4">Micro</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>

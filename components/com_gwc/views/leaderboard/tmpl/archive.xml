@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="GWC Past Competitions" option="">
+		<help
+			key = ""
+		/>
+		<message>
+			
+		</message>
+	</layout>
+	
+	<view title="CAST_VIEW" hidden="true">
+		<message></message>
+	</view>
+	<view title="past_competitions"><message>Past Competitions</message></view>
+
+	<!-- Add fields to the request variables for the layout. -->
+	<fields name="params">
+	<fieldset name="basic"
+			label="">
+		<field
+			name="layout"
+			type="hidden"
+			label="Select Layout"
+			value="archive"
+			>
+		</field>
+	</fieldset>
+	</fields>
+</metadata>

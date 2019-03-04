@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+	<name>MOD_SMARTCOUNTDOWN3</name>
+	<author>Alex Polonski</author>
+	<creationDate>2012 - 2015</creationDate>
+	<copyright>Copyright (c)2012 Alex Polonski</copyright>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<authorEmail>alex3493@yandex.ru</authorEmail>
+	<authorUrl>smartcalc.es</authorUrl>
+	<version>3.2.6</version>
+	<description>MOD_SMARTCOUNTDOWN3_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_smartcountdown3">mod_smartcountdown3.php</filename>
+		<folder>tmpl</folder>
+		<folder>helpers</folder>
+		<folder>fields</folder>
+    <folder>css</folder>
+    <folder>less</folder>
+		<folder>fx</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>language</folder>
+		<folder>layouts</folder>
+		<filename>index.html</filename>
+		<filename>mod_smartcountdown3.xml</filename>
+	</files>
+	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="deadline" type="calendar" label="MOD_SMARTCOUNTDOWN3_DEADLINE_LABEL"
+					description="MOD_SMARTCOUNTDOWN3_DEADLINE_DESC" class="inputbox" size="22"
+					format="%Y-%m-%d %H:%M:%S" filter="user_utc" default="now" />
+				<field name="counter_modes" type="groupedlist" default="-1:-1" class="input-xlarge"
+					label="MOD_SMARTCOUNTDOWN3_COUNTER_MODES_LABEL" description="MOD_SMARTCOUNTDOWN3_COUNTER_MODES_DESC">
+					<option value="-1:0">MOD_SMARTCOUNTDOWN3_SHOW_COUNTDOWN_ONLY</option>
+					<option value="-1:-1">MOD_SMARTCOUNTDOWN3_SHOW_BOTH_AUTO</option>
+					<option value="0:-1">MOD_SMARTCOUNTDOWN3_SHOW_COUNTUP_ONLY</option>
+					<group label="MOD_SMARTCOUNTDOWN3_COUNTDOWN_OPTIONS_GROUP">
+						<option value="60:0">MOD_SMARTCOUNTDOWN3_SHOW_COUNTDOWN_60</option>
+						<option value="300:0">MOD_SMARTCOUNTDOWN3_SHOW_COUNTDOWN_300</option>
+						<option value="900:0">MOD_SMARTCOUNTDOWN3_SHOW_COUNTDOWN_900</option>
+						<option value="1800:0">MOD_SMARTCOUNTDOWN3_SHOW_COUNTDOWN_1800</option>
+						<option value="3600:0">MOD_SMARTCOUNTDOWN3_SHOW_COUNTDOWN_3600</option>
+						<option value="28800:0">MOD_SMARTCOUNTDOWN3_SHOW_COUNTDOWN_28800</option>
+						<option value="43200:0">MOD_SMARTCOUNTDOWN3_SHOW_COUNTDOWN_43200</option>
+						<option value="86400:0">MOD_SMARTCOUNTDOWN3_SHOW_COUNTDOWN_86400</option>
+					</group>
+					<group label="MOD_SMARTCOUNTDOWN3_COUNTUP_OPTIONS_GROUP">
+						<option value="0:60">MOD_SMARTCOUNTDOWN3_SHOW_COUNTUP_60</option>
+						<option value="0:300">MOD_SMARTCOUNTDOWN3_SHOW_COUNTUP_300</option>
+						<option value="0:900">MOD_SMARTCOUNTDOWN3_SHOW_COUNTUP_900</option>
+						<option value="0:1800">MOD_SMARTCOUNTDOWN3_SHOW_COUNTUP_1800</option>
+						<option value="0:3600">MOD_SMARTCOUNTDOWN3_SHOW_COUNTUP_3600</option>
+						<option value="0:28800">MOD_SMARTCOUNTDOWN3_SHOW_COUNTUP_28800</option>
+						<option value="0:43200">MOD_SMARTCOUNTDOWN3_SHOW_COUNTUP_43200</option>
+						<option value="0:86400">MOD_SMARTCOUNTDOWN3_SHOW_COUNTUP_86400</option>
+					</group>
+					<option value="-1:-2">MOD_SMARTCOUNTDOWN3_SHOW_COUNTDOWN_TO_END</option>
+				</field>
+				<field name="text1" type="textarea" class="input-xlarge"
+					label="MOD_SMARTCOUNTDOWN3_TEXT1_LABEL" description="MOD_SMARTCOUNTDOWN3_TEXT1_DESC"
+					rows="8" cols="30" filter="safehtml" />
+				<field name="text2" type="textarea" class="input-xlarge"
+					label="MOD_SMARTCOUNTDOWN3_TEXT2_LABEL" description="MOD_SMARTCOUNTDOWN3_TEXT2_DESC"
+					rows="8" cols="30" filter="safehtml" />
+			</fieldset>
+			
+			<fieldset name="styles">
+        <field name="head_scripts" type="textarea" class="input-xxlarge"
+          label="MOD_SMARTCOUNTDOWN3_HEAD_SCRIPTS" description="MOD_SMARTCOUNTDOWN3_HEAD_SCRIPTS_DESC" rows="8" cols="30" filter="raw" />
+				<field name="module_style" type="text"
+					label="MOD_SMARTCOUNTDOWN3_MODULE_STYLE_LABEL" description="MOD_SMARTCOUNTDOWN3_MODULE_STYLE_DESC"
+					size="50" class="inputbox input-xxlarge" />
+				<field name="title_before_style" type="text"
+					label="MOD_SMARTCOUNTDOWN3_TITLE_BEFORE_STYLE_LABEL" description="MOD_SMARTCOUNTDOWN3_TITLE_BEFORE_STYLE_DESC"
+					size="50" class="inputbox input-xxlarge" />
+				<field name="title_after_style" type="text"
+					label="MOD_SMARTCOUNTDOWN3_TITLE_AFTER_STYLE_LABEL" description="MOD_SMARTCOUNTDOWN3_TITLE_AFTER_STYLE_DESC"
+					size="50" class="inputbox input-xxlarge" />	
+				<field name="digits_style" type="text"
+					label="MOD_SMARTCOUNTDOWN3_DIGITS_STYLE_LABEL" description="MOD_SMARTCOUNTDOWN3_DIGITS_STYLE_DESC"
+					size="50" class="inputbox input-xxlarge" />
+				<field name="labels_style" type="text"
+					label="MOD_SMARTCOUNTDOWN3_LABELS_STYLE_LABEL" description="MOD_SMARTCOUNTDOWN3_LABELS_STYLE_DESC"
+					size="50" class="inputbox input-xxlarge" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

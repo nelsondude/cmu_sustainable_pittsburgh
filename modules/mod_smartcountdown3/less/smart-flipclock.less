@@ -1,0 +1,164 @@
+.smart-flipclock {
+  text-align: center;
+  background: url('../images/gwc/gwc-countdown-bg.png');
+  background-size: cover;
+  min-height: 270px;
+  width: 100%;
+  display: table;
+  position: relative;
+  z-index: 1;
+  font-family: "aktiv-grotesk", sans-serif;
+  font-weight: 300;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: 0;
+  }
+}
+
+.smart-flipclock-inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.smart-flipclock-flipclock.flip-clock-wrapper {
+  display: inline-block;
+  margin: 0;
+  width: auto;
+  margin-bottom: 31px;
+
+  .flip-clock-divider {
+    height: 119px;
+  }
+
+  .flip-clock-dot {
+    visibility: hidden;
+  }
+
+  .flip-clock-label {
+    top: auto;
+    bottom: -1.25em;
+    left: 100%;
+    color: #fff;
+    width: 190px;
+    text-align: center;
+    font-size: 25px;
+    font-family: "aktiv-grotesk", sans-serif;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  ul {
+    font-family: "myriad-pro-condensed", sans-serif;
+    font-weight: 700;
+    width: 85px;
+    height: 109px;
+    border-radius: 10px;
+  }
+
+  ul li a div.up {
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -20px;
+      width: 78px;
+      height: 40px;
+      background-image: url('../images/gwc/gwc-countdown-rings.png');
+      z-index: 100;
+      left: 4px;
+    }
+
+    &:after {
+     top: 100%;
+     margin-top: -3px;
+     background-color: #000;
+     height: 3px;
+    }
+  }
+
+  ul li a div.down {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -20px;
+      width: 78px;
+      height: 40px;
+      background-image: url('../images/gwc/gwc-countdown-rings.png');
+      z-index: 100;
+      left: 4px;
+    }
+
+    &:after {
+     top: 0;
+     background-color: #000;
+     height: 3px;
+     content: "";
+     position: absolute;
+     left: 0;
+     z-index: 5;
+     width: 100%;
+    }
+  }
+
+  ul li a div div.inn {
+    color: #d6d6d6;
+    font-size: 100px;
+    line-height: 1;
+    border-radius: 10px;
+    text-shadow: 0 0px 3px #000;
+    border: 2px solid #99a57e;
+
+    background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0, #6D8441),
+      color-stop(1, #E2E2DE)
+    );
+    background-image: -o-linear-gradient(bottom, #6D8441 0%, #E2E2DE 100%);
+    background-image: -moz-linear-gradient(bottom, #6D8441 0%, #E2E2DE 100%);
+    background-image: -webkit-linear-gradient(bottom, #6D8441 0%, #E2E2DE 100%);
+    background-image: -ms-linear-gradient(bottom, #6D8441 0%, #E2E2DE 100%);
+    background-image: linear-gradient(to top, #6D8441 0%, #E2E2DE 100%);
+  }
+}
+
+.smart-flipclock-text1,
+.smart-flipclock-text2 {
+  color: #fff;
+  font-family: "aktiv-grotesk", sans-serif;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+  width: 50%;
+  text-align: left;
+}
+
+.smart-flipclock-text1 {
+  font-size: 26px;
+  line-height: 1em;
+  font-weight: 200;
+  padding-left: 414px;
+  margin-top: 10px;
+}
+
+.smart-flipclock-text2 {
+  font-size: 35px;
+  line-height: 1em;
+  font-weight: 300;
+  padding-left: 414px;
+  margin-top: 10px;
+}

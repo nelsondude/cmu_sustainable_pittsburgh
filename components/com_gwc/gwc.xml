@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.3.0" method="upgrade">
+        <name>GWC Competition</name>
+        <!-- The following elements are optional and free of formatting constraints -->
+        <creationDate>Sept 2013</creationDate>
+        <author>Brian Hackett</author>
+        <authorEmail>brian@openarc.net</authorEmail>
+        <authorUrl></authorUrl>
+        <copyright></copyright>
+        <license></license>
+        <version>0.1</version>
+        <description>COM_GWC_DESC</description>
+        
+        <files folder="site">                
+                <filename>gwc.php</filename>
+				<folder>controllers</folder>
+				<folder>models</folder>
+				<folder>views</folder>	
+        </files>
+        
+        <languages>
+            <language tag="en-GB">language/en-GB/en-GB.com_gwc.ini</language>
+            <language tag="en-GB">language/en-GB/en-GB.com_gwc.sys.ini</language>
+        </languages>
+        
+        <administration>
+				<menu img="images/header/avatar2.jpg" view="teams">COM_GWC</menu>                
+                <submenu>
+                    <menu view="teams" link="option=com_gwc&amp;view=actions">Actions</menu>
+					<menu view="users" link="option=com_gwc&amp;view=categories">Categories</menu>
+                    <menu view="companies" link="option=com_gwc&amp;view=companies">Companies</menu>
+                    <menu view="documents" link="option=com_gwc&amp;view=submissions">Submission</menu>
+                </submenu>
+                <files folder="admin">
+					<filename>gwc.php</filename>
+					<filename>controller.php</filename>
+					<filename>gwc.xml</filename>
+					<filename>config.xml</filename>
+					<folder>controllers</folder>
+					<folder>models</folder>
+					<folder>views</folder>					
+                </files>
+                <languages>
+                    <language tag="en-GB">language/en-GB/en-GB.com_gwc.ini</language>
+                    <language tag="en-GB">language/en-GB/en-GB.com_gwc.sys.ini</language>
+                </languages>
+        </administration>
+</extension>

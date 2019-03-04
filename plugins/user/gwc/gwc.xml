@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.1" type="plugin" group="user" method="upgrade">
+	<name>GWC User Data</name>
+	<author></author>
+	<creationDate>January 2017</creationDate>
+	<copyright>(C) 2005 - 2017 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail></authorEmail>
+	<authorUrl></authorUrl>
+	<version>1.0.0</version>
+	<description></description>
+	<files>
+		<filename plugin="gwc">gwc.php</filename>
+		<folder>profiles</folder>
+	</files>
+	<config>
+	</config>
+</extension>

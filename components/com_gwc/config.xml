@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset
+		name="competition"
+		label="GWC Competition"
+		description="Default settings for Competition Component">
+
+		<field
+			name="current_cycle" 
+			label="Current Cycle"
+			type="list"
+			description="Current Competition Cycle (by year)"
+			extension="com_gwc">
+			<option value="2014">2014</option>
+			<option value="2015">2015</option>
+			<option value="2016">2016</option>
+		</field>
+		
+		<field
+			name="startdate"
+			label = "Start Date"
+			type="date"
+			description="Competition Start date."
+			extension="com_gwc"
+		/>
+		<field
+			name="admin_email" 
+			label="Email to receive notifications of submittals"
+			type="text"
+			extension="com_gwc" />
+	</fieldset>
+		
+</config>

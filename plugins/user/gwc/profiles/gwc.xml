@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="gwc">
+        <fieldset 
+			name="gwc"
+            label="Competition Data"
+        >
+            <field
+                name="organization"
+                type="text"
+                id="organization"
+                description=""
+                filter="string"
+                label="Organization Name"
+                message=""
+                size="30"
+                required="true"
+                class="form-control"
+            />
+			<field
+                name="organization_address"
+                type="textarea"
+                id="organization_address"
+                description=""
+                filter="string"
+                label="Organization Address"
+                message=""
+                size="30"
+                required="true"
+                class="form-control"
+            />
+            <field
+                name="firstname"
+                type="text"
+                id="firstname"
+                description=""
+                filter="string"
+                label="First Name"
+                message=""
+                size="30"
+                required="true"
+                class="namefield form-control"
+            />
+            <field
+                name="lastname"
+                type="text"
+                id="lastname"
+                description=""
+                filter="string"
+                label="Last Name"
+                message=""
+                size="30"
+                required="true"
+                class="namefield form-control"
+            />
+
+            <field
+                name="title"
+                type="text"
+                id="title"
+                description=""
+                filter="string"
+                label="Title"
+                message=""
+                size="30"
+                required="true"
+                class="form-control"
+            />
+
+            <field
+                name="phonenumber"
+                type="tel"
+                id="phonenumber"
+                description=""
+                filter="string"
+                label="Phone Number"
+                message=""
+                size="30"
+                required="true"
+                class="form-control"
+            />
+
+			<field
+				name="orgsize"
+				type="text"
+				id="orgsize"
+				description="If you must estimate, please be as exact as possible."
+				filter="string"
+				label="Number of employees"
+				message=""
+				size="30"
+				required="true"
+				class="form-control"
+			/>
+            <field
+                name="orgtype"
+                type="radio"
+                id="orgtype"
+                description=""
+                filter="string"
+                label="Organization Type"
+                message=""
+                size="30"
+                required="true"
+            >
+                <option value="business">Business</option>
+                <option value="nonprofit">Nonprofit</option>
+                <option value="municipality">Municipality</option>
+                <option value="university">University</option>
+                <option value="k12school">K-12 School</option>
+			</field>
+			<field
+				name="observer"
+				type="checkbox"
+				id="observer"
+				description=""
+				filter="string"
+				label="My organization would like to participate, but not compete against others."
+				message=""
+			>
+				<option value="1"></option>
+			</field>
+        </fieldset>
+    </fields>
+</form>
