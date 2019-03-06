@@ -1,7 +1,5 @@
 # Ignore found at https://github.com/github/gitignore/blob/master/Joomla.gitignore
 /.htaccess
-/administrator/components/com_akeeba/backup/site-spchallenge.org-20180612-103109.j01
-/administrator/components/com_akeeba/backup/site-spchallenge.org-20180612-103109.jpa
 /administrator
 /cache/*
 /bin/*
@@ -20,7 +18,7 @@
 /components/com_modules/*
 /components/com_newsfeeds/*
 /components/com_search/*
-/components/com_users/*
+#/components/com_users/*
 /components/com_wrapper/*
 /components/index.html
 /includes/*
@@ -139,25 +137,6 @@
 /libraries/index.html
 /libraries/import.php
 /libraries/loader.php
-/media/cms/*
-/media/com_contenthistory/*
-/media/com_finder/*
-/media/com_joomlaupdate/*
-/media/com_wrapper/*
-/media/contacts/*
-/media/editors/*
-/media/jui/*
-/media/mailto/*
-/media/media/*
-/media/mod_languages/*
-/media/overrider/*
-/media/plg_captcha_recaptcha/*
-/media/plg_quickicon_extensionupdate/*
-/media/plg_quickicon_joomlaupdate/*
-/media/plg_system_highlight/*
-/media/plg_system_stats/*
-/media/system/*
-/media/index.html
 /modules/mod_articles_archive/*
 /modules/mod_articles_categories/*
 /modules/mod_articles_category/*
@@ -257,5 +236,7 @@
 /joomla.xml
 /*.txt
 /robots.txt.dist
+
+# Added by us to reduce size of commit
 /images/*
 /media/*
