@@ -37,6 +37,9 @@
 .uk-navbar-nav+li:after {
  content: ""; 
 }
+.uk-navbar-nav>li>a:hover {
+	cursor: pointer !important;
+}
 body{position:relative;}
 body,
 button, input {
