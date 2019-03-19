@@ -43,6 +43,8 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
     <input type="search"
            id="accordion_search_bar"
            placeholder="Search"/>
+    <button class="btn btn-success" id="expandall">Expand All</button>
+    <button class="btn btn-success" id="collapseall">Collapse All</button>
 </div>
 
 <div class="panel-group"
@@ -108,6 +110,18 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
                 $(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
                 $(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show();
             });
+            $('.actionlist li').find(':not(:containsCaseInsensitive(' + searchTerm + '))').each(function() {
+                $(this).parent().css('display', 'none');
+            })
+            $('.actionlist li').find(':containsCaseInsensitive(' + searchTerm + ')').each(function() {
+                $(this).parent().css('display', 'block');
+            })
+        });
+        $('#expandall').click(function() {
+            $('#accordion .collapse').collapse('show');
+        });
+        $('#collapseall').click(function() {
+            $('#accordion .collapse').collapse('hide');
         });
     }());
 </script>

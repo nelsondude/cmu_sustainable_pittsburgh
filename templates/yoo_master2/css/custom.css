@@ -1836,28 +1836,23 @@ form.register > .fieldset em{
 }
 
 #accordion_search_bar_container {
-		 position: relative;
-	 }
+	position: relative;
+	display: flex;
+	padding: 5px;
+}
 
-#accordion_search_bar_container:after {
-	 content: '\e003';
-	 font-family: Glyphicons Halflings;
-	 width: 18px;
-	 height: 18px;
-	 position: absolute;
-	 right: 10px;
-	 bottom: 10px;
+#accordion_search_bar_container button {
+	border-radius: 50px;
 }
 
 #accordion_search_bar {
-	display: block;
-	margin: 10px auto;
-	width: 100%;
+	flex-grow: 1;
 	padding: 7px 10px;
 	border: 1px solid grey;
 	border-radius: 25px;
 	outline: 0;
 }
+
 
 .panel {
 	overflow: hidden;
