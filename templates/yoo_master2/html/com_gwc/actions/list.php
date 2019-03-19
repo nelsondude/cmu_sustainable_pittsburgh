@@ -68,7 +68,7 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
                 </h4>
             </div>
             <div id="collapse<?php echo $stripped_category;?>"
-                 class="panel-collapse collapse in"
+                 class="panel-collapse collapse"
                  role="tabpanel"
                  aria-labelledby="headingOne">
                 <div class="panel-body">
