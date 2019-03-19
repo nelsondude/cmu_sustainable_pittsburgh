@@ -92,6 +92,25 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
     <?php endforeach;?>
 </div>
 
+<script>
+    (function(){
+        var searchTerm, panelContainerId;
+        var $ = jQuery;
+        $.expr[':'].containsCaseInsensitive = function (n, i, m) {
+            return jQuery(n).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+        };
+
+        $('#accordion_search_bar').on('change keyup paste click', function () {
+            searchTerm = $(this).val();
+            $('#accordion > .panel').each(function () {
+                panelContainerId = '#' + $(this).attr('id');
+                $(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
+                $(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show();
+            });
+        });
+    }());
+</script>
+
 <ul class="actionlist">
 
 <?php foreach ($this->items as $i => $item) : ?>
