@@ -1138,9 +1138,7 @@ input[type="submit"].btn{width:275px;padding:4px 12px;}
 	padding:10px 0;
 }
 .actionlist li{
-	border-style:solid;
-	border-color:#ddd;
-	border-width:1px 0 0;
+	border-bottom: 1px solid #ddd;
 }
 .actionlist li a{
 	display:inline-block;

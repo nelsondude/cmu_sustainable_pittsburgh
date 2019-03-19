@@ -72,9 +72,10 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
                  role="tabpanel"
                  aria-labelledby="headingOne">
                 <div class="panel-body">
-                    <ul>
+                    <ul class="actionlist">
                         <?php foreach ($items as $index => $item) : ?>
-                            <li>
+                            <li class="clearfix row<?php echo $index%2;?>">
+                                <strong><?php echo $item->action_number;?></strong>
                                 <?php if ($ongoing): ?>
                                     <a class=""
                                        href="index.php?option=com_gwc&view=actions&layout=default&id=<?php echo $item->id; ?>">
