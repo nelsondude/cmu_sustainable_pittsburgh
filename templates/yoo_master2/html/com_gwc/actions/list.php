@@ -112,36 +112,3 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
     }());
 </script>
 
-<ul class="actionlist">
-
-<?php foreach ($this->items as $i => $item) : ?>
-<?php //if ((substr($item->action_number, 0, 3) != "K12" && $this->userinfo->type !=4) || (substr($item->action_number, 0, 3) == "K12" && $this->userinfo->type ==4)) { ?>
-<?php if (in_array($this->userinfo->type, explode(",",$item->type_ids))) { ?>
-
-	<?php if($cat != $item->category):?>
-
-		<h3><?php echo $item->category;?></h3>
-
-	<?php endif;?>
-	<li class="clearfix row<?php echo $i%2;?>"><strong><?php echo $item->action_number;?></strong> 
-		<?php if($ongoing):?>
-
-		<a class="" href="index.php?option=com_gwc&view=actions&layout=default&id=<?php echo $item->id;?>">
-
-			<?php echo $item->name;?>
-
-		</a>
-
-		<?php else :?>
-
-			<?php echo $item->name;?>
-
-		<?php endif;?>
-
-	</li>
-
-	<?php $cat = $item->category;?>
-<?php } ?>
-<?php endforeach;?>
-
-</ul>
