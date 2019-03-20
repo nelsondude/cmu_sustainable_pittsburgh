@@ -10,6 +10,7 @@
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.keepalive');
+$prop = "";
 
 ?>
 
@@ -19,11 +20,14 @@ JHtml::_('behavior.keepalive');
 
 		<?php if ($params->get('greeting')) : ?>
 		<div class="uk-form-row">
-			<?php if ($params->get('name') == 0) : {
-				echo JText::sprintf('MOD_LOGIN_HINAME', htmlspecialchars($user->get('name')));
+
+			<?php
+            if ($params->get('name') == 0) : {
+			    $prop = 'name';
 			} else : {
-				echo JText::sprintf('MOD_LOGIN_HINAME', htmlspecialchars($user->get('username')));
+			    $prop = 'username';
 			} endif; ?>
+            <a href="index.php/my-profile" id="profile-link"><?php echo htmlspecialchars($user->get($prop));?></a>
 		</div>
 		<?php endif; ?>
 
