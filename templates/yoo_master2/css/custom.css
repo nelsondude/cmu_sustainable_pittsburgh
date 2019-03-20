@@ -1138,9 +1138,7 @@ input[type="submit"].btn{width:275px;padding:4px 12px;}
 	padding:10px 0;
 }
 .actionlist li{
-	border-style:solid;
-	border-color:#ddd;
-	border-width:1px 0 0;
+	border-bottom: 1px solid #ddd;
 }
 .actionlist li a{
 	display:inline-block;
@@ -1835,4 +1833,31 @@ form.register > .fieldset em{
 	.tm-footer .uk-container .uk-panel.footer-newsletter{
 		background-position:right bottom;
 	}
+}
+
+#accordion_search_bar_container {
+	position: relative;
+	display: flex;
+	padding: 5px;
+}
+
+#accordion_search_bar_container button {
+	border-radius: 50px;
+}
+
+#accordion_search_bar {
+	flex-grow: 1;
+	padding: 7px 10px;
+	border: 1px solid grey;
+	border-radius: 25px;
+	outline: 0;
+}
+
+
+.panel {
+	overflow: hidden;
+}
+
+.panel-title a {
+	display: block;
 }
