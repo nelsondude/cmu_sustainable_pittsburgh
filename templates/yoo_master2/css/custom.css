@@ -1835,6 +1835,14 @@ form.register > .fieldset em{
 	}
 }
 
+#profile-link {
+	color: white;
+	padding: 14px 10px;
+}
+#profile-link:hover {
+	color: black;
+	background: white;
+
 #accordion_search_bar_container {
 	position: relative;
 	display: flex;
