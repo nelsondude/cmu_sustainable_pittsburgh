@@ -6,7 +6,9 @@ $user = JFactory::getUser();
 //die('<pre>'.print_r($this->actions,1));
 //die('<pre>'.print_r($this,1));
 ?>
-<h1><?php echo $this->info->name;?> - <?php echo intval($this->info->points) + intval($this->info->legacy_points);?></h1>
+<h1><?php echo $this->info->name;?></h1>
+<h3>Points Awarded: <?php echo intval($this->info->points) + intval($this->info->legacy_points);?></h3>
+<hr>
 <?php foreach($this->actions as $label=>$actions) :?>
 <h3>
 	<?php echo ucwords($label);?> Actions
