@@ -1842,6 +1842,7 @@ form.register > .fieldset em{
 #profile-link:hover {
 	color: black;
 	background: white;
+}
 
 #accordion_search_bar_container {
 	position: relative;
