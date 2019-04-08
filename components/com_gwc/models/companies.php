@@ -91,7 +91,7 @@ class GwcModelCompanies extends JModelList {
 
         $query = $db->getQuery(true);
         $conditions = array(
-            $db->quoteName('id') . ' = '.$action_id,
+            $db->quoteName('action_id') . ' = '.$action_id,
             $db->quoteName('company_id') . ' = ' . $id
         );
         $query->delete($db->quoteName('#__gwc_planned_actions'));
