@@ -54,6 +54,10 @@ class GwcModelCompanies extends JModelList {
         return $results;
     }
 
+    public function getNumberOfPlannedActions() {
+	    return count($this->getPlannedActions());
+    }
+
     public function updatePlannedAction($action_id, $deadline) {
         $user = JFactory::getUser();
         $id = gwcHelper::getUserByCompany($user->id);
