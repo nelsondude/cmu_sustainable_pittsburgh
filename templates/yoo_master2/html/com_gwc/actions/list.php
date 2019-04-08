@@ -99,7 +99,7 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
                                 <?php else : ?>
                                     <?php echo $item->name; ?>
                                 <?php endif; ?>
-                                <span style="float: right;"><input type="checkbox"></span>
+                                <span style="float: right;"><input type="checkbox" <?php echo $item->is_planned==1 ? 'checked' : '' ?>></span>
                             </li>
                         <?php endforeach;?>
                     </ul>
