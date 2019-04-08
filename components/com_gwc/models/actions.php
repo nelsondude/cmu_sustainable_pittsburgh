@@ -15,6 +15,8 @@ class GwcModelActions extends JModelItem {
 	public function getList(){
 		$db = $this->getDbo();
 		$query = $db->getQuery(true);
+		$user = JFactory::getUser();
+		$company = gwcHelper::getCompanyByUser($user->id);
 		$query
 			->select('a.id, a.name, a.action_number, a.points, c.type_ids')
 			->select('
@@ -29,7 +31,14 @@ class GwcModelActions extends JModelItem {
 						ELSE c.name
 					END as category
 				')
+            ->select('
+                    CASE
+                        WHEN p.id IS NULL THEN 0
+                        ELSE 1
+                    END as is_planned
+                ')
 			->from('#__gwc_actions a')
+            ->leftJoin('#__gwc_planned_actions p on p.action_id = a.id AND p.company_id = '.$company)
 			->join('LEFT', '#__gwc_action_categories c ON a.category = c.id')
 			->join('LEFT', '#__gwc_action_categories c2 ON c.parent = c2.id')
 			->where('year = ' . gwcHelper::getCycle())

@@ -185,6 +185,8 @@ $user = JFactory::getUser();
     }());
 </script>
 
+<?php var_dump($this->planned) ?>
+
 
 <script>
 $ = jQuery;
