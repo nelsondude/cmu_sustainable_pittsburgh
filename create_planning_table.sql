@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `zpaq2_planned_actions`;
-CREATE TABLE `zpaq2_planned_actions`
+DROP TABLE IF EXISTS `zpaq2_gwc_planned_actions`;
+CREATE TABLE `zpaq2_gwc_planned_actions`
 (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `action_id`  int(11) NOT NULL,
