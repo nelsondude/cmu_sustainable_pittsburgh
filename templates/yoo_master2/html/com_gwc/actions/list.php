@@ -60,7 +60,7 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
 
 <div id="planned_actions">
     <a href="<?php echo JRoute::_('index.php?option=com_gwc&view=companies&id='.$this->data->companyid.'#planner-title');?>">
-        <strong>Planned Actions (<?php echo $num_planned ?>)</strong>
+        <strong>Planned Actions (<span id="num_planned"><?php echo $num_planned ?></span>)</strong>
     </a>
 </div>
 
@@ -150,9 +150,19 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
         function(){
             var id = $(this).data("id");
             if ($(this).is(':checked')) {
-                alert('checked ' + id);
+                // now it is checked, was not checkec
+                $.post('index.php?option=com_gwc&task=companies.addPlannedAction', {"action_id": id} )
+                    .done(function(data){
+                        var currentValue = parseInt($("#num_planned").text(),10);
+                        $('#num_planned').text(currentValue + 1);
+                    });
             } else {
-                alert('not checked ' + id);
+                // now it is not checked, was checked
+                $.post('index.php?option=com_gwc&task=companies.removePlannedAction', {"action_id": id} )
+                    .done(function(data){
+                        var currentValue = parseInt($("#num_planned").text(),10);
+                        $('#num_planned').text(currentValue - 1);
+                    });
             }
         });
 </script>
