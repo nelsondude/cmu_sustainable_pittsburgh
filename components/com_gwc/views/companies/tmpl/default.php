@@ -103,7 +103,7 @@ $user = JFactory::getUser();
 <?php endforeach; ?>
 <hr>
 
-<h3>Planned Actions (<?php echo 2?>)</h3>
+<h3 id="planner-title">Planned Actions (<?php echo 2?>)</h3>
 <h4>Total Points: <?php echo 125 ?></h4>
 
 <!-- Latest compiled and minified JavaScript -->
