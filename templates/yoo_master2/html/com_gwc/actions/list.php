@@ -103,7 +103,7 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
                                 <?php else : ?>
                                     <?php echo $item->name; ?>
                                 <?php endif; ?>
-                                <span style="float: right;"><input type="checkbox" <?php echo $item->is_planned==1 ? 'checked' : '' ?>></span>
+                                <span style="float: right;"><input type="checkbox" <?php echo $item->is_planned==1 ? 'checked' : '' ?> data-id="<?php echo $item->id?>"></span>
                             </li>
                         <?php endforeach;?>
                     </ul>
@@ -142,5 +142,18 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
             $('#accordion .collapse').collapse('hide');
         });
     }());
+</script>
+
+<script>
+    var $ = jQuery;
+    $('input:checkbox').change(
+        function(){
+            var id = $(this).data("id");
+            if ($(this).is(':checked')) {
+                alert('checked ' + id);
+            } else {
+                alert('not checked ' + id);
+            }
+        });
 </script>
 
