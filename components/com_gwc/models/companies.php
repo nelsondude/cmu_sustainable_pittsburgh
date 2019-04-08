@@ -101,6 +101,29 @@ class GwcModelCompanies extends JModelList {
         $result = $db->execute();
     }
 
+    public function addPlannedAction($action_id) {
+        $user = JFactory::getUser();
+        $id = gwcHelper::getUserByCompany($user->id);
+        $db = JFactory::getDBO();
+        if(!$id) return null;
+
+        // Insert columns.
+        $columns = array('action_id', 'company_id', 'user_id');
+
+        // Insert values.
+        $values = array($action_id, $id, $user->id);
+
+        $query = $db->getQuery(true);
+        $query
+            ->insert($db->quoteName('#__gwc_planned_actions'))
+            ->columns($db->quoteName($columns))
+            ->values(implode(',', $values));
+
+        // Set the query using our newly populated query object and execute it.
+        $db->setQuery($query);
+        $db->execute();
+    }
+
 	public function getCompanyInfo(){
 		$user = JFactory::getUser();
 		$id = gwcHelper::getUserByCompany($user->id);

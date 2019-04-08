@@ -41,4 +41,9 @@ class GwcControllerCompanies extends JControllerAdmin {
         $model = $this->getModel('companies');
         $model->removePlannedAction($action_id);
     }
+    public function addPlannedAction() {
+        $action_id = JRequest::getVar("action_id");
+        $model = $this->getModel('companies');
+        $model->addPlannedAction($action_id);
+    }
 }
