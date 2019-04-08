@@ -66,11 +66,11 @@ class GwcModelCompanies extends JModelList {
 
         $query = $db->getQuery(true);
         $fields = array(
-            $db->quoteName('deadline') . ' = ' . $db->quote($deadline),
+            $db->quoteName('deadline') . ' = ' . ($deadline ? $db->quote($deadline) : 'NULL'),
         );
 
         $conditions = array(
-            $db->quoteName('id') . ' = '.$action_id,
+            $db->quoteName('action_id') . ' = '.$action_id,
             $db->quoteName('company_id') . ' = ' . $id
         );
 

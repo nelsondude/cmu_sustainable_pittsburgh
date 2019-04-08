@@ -170,7 +170,7 @@ foreach ($this->planned as $i => $item) {
                         <?php foreach ($items as $index => $item) : ?>
                             <tr id="tablerow<?php echo $item->action_id?>">
                                 <td><?php echo $item->action_name?></td>
-                                <td><?php echo $item->deadline?></td>
+                                <td><input class="form-control" type="date" value="<?php echo $item->deadline?>" data-id="<?php echo $item->action_id?>"></td>
                                 <td class="planning-points"><?php echo $item->points?></td>
                                 <td class="planning-delete"><i class="fa fa-trash delete-button" aria-hidden="true" data-id="<?php echo $item->action_id?>"></i></td>
                             </tr>
@@ -265,7 +265,19 @@ $(document).ready(function(){
 		}
 	});
 
+	$('input[type="date"]').change(function() {
+	    var deadline = $(this).val();
+	    var id = $(this).data("id");
+	    $.post('index.php?option=com_gwc&task=companies.updatePlannedAction', {"action_id": id, "deadline": deadline})
+            .done(function(data) {
+                console.log('done');
+            })
+    });
+
 	$('.delete-button').click(function() {
+        var del = window.confirm("Are you sure you want to remove this action from your planner?");
+        if (!del) return;
+
 	    var id = $(this).data("id");
         $.post('index.php?option=com_gwc&task=companies.removePlannedAction', {"action_id": id} )
             .done(function(data){

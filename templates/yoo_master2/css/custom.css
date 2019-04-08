@@ -1854,6 +1854,10 @@ form.register > .fieldset em{
 	border-radius: 50px;
 }
 
+#accordion_search_bar_container button:focus {
+	outline: 0;
+}
+
 #accordion_search_bar {
 	flex-grow: 1;
 	padding: 7px 10px;
@@ -1872,6 +1876,14 @@ form.register > .fieldset em{
 
 .planning-points, .planning-delete {
 	text-align: center;
+}
+
+.planning-table td:not(:first-child) {
+	width: 1px;
+}
+
+.planning-table td, .planning-table th {
+	padding: 8px;
 }
 
 .panel {
