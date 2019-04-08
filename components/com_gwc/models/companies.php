@@ -44,7 +44,7 @@ class GwcModelCompanies extends JModelList {
         if(!$id) return null;
 
         $query = $db->getQuery(true);
-        $query->select('p.id, p.action_id, a.name as action_name, p.deadline, ac.name as category, a.points as points');
+        $query->select('p.id, p.action_id, a.name as action_name, p.deadline, ac.name as category, a.points as points, a.action_number');
         $query->from('#__gwc_planned_actions p');
         $query->join('INNER', '#__gwc_actions a ON a.id = p.action_id');
         $query->join('INNER', '#__gwc_action_categories ac ON a.category = ac.id');

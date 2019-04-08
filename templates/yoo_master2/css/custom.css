@@ -1878,8 +1878,8 @@ form.register > .fieldset em{
 	text-align: center;
 }
 
-.planning-table td:not(:first-child) {
-	width: 1px;
+.planning-table td:not(:nth-child(2)) {
+	width: 75px;
 }
 
 .planning-table td, .planning-table th {

@@ -161,6 +161,7 @@ foreach ($this->planned as $i => $item) {
                 <div class="panel-body">
                     <table class="planning-table">
                         <tr>
+                            <th>#</th>
                             <th>Action</th>
                             <th>Planned Deadline</th>
                             <th class="planning-points">Points</th>
@@ -169,6 +170,7 @@ foreach ($this->planned as $i => $item) {
 
                         <?php foreach ($items as $index => $item) : ?>
                             <tr id="tablerow<?php echo $item->action_id?>">
+                                <td><?php echo $item->action_number?></td>
                                 <td><?php echo $item->action_name?></td>
                                 <td><input class="form-control" type="date" value="<?php echo $item->deadline?>" data-id="<?php echo $item->action_id?>"></td>
                                 <td class="planning-points"><?php echo $item->points?></td>
