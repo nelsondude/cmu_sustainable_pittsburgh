@@ -5,6 +5,16 @@ $year = gwcHelper::getCycle();
 $user = JFactory::getUser();
 //die('<pre>'.print_r($this->actions,1));
 //die('<pre>'.print_r($this,1));
+
+//Group by the item category
+$number_planned = count($this->planned);
+$num_points = 0;
+$grouped = array();
+foreach ($this->planned as $i => $item) {
+    $grouped[$item->category][] = $item;
+    $num_points = (int)$item->points;
+}
+
 ?>
 <h1><?php echo $this->info->name;?></h1>
 <h3>Points Awarded: <?php echo intval($this->info->points) + intval($this->info->legacy_points);?></h3>
@@ -103,8 +113,8 @@ $user = JFactory::getUser();
 <?php endforeach; ?>
 <hr>
 
-<h3 id="planner-title">Planned Actions (<?php echo 2?>)</h3>
-<h4>Total Points: <?php echo 125 ?></h4>
+<h3 id="planner-title">Planned Actions (<?php echo $number_planned?>)</h3>
+<h4>Total Points: <?php echo $num_points ?></h4>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -123,35 +133,40 @@ $user = JFactory::getUser();
      id="accordion"
      role="tablist"
      aria-multiselectable="true">
+    <?php foreach ($grouped as $category => $items) :?>
+        <?php $stripped_category = str_replace(' ', '', $category) ?>
         <div class="panel panel-success"
-             id="collapse_container">
+             id="collapse<?php echo $stripped_category;?>_container">
             <div class="panel-heading"
                  role="tab"
                  id="headingOne">
                 <h4 class="panel-title">
                     <a role="button"
                        data-toggle="collapse"
-                       data-target='#collapse'
+                       data-target='#collapse<?php echo $stripped_category?>'
                        href="javascript:void(0);"
                        aria-expanded="true"
-                       aria-controls="collapse">
-                        Panel Title
+                       aria-controls="collapse<?php echo $stripped_category;?>">
+                        <?php echo $category ?>
                     </a>
                 </h4>
             </div>
-            <div id="collapse"
-                 class="panel-collapse collapse"
+            <div id="collapse<?php echo $stripped_category;?>"
+                 class="panel-collapse collapse in"
                  role="tabpanel"
                  aria-labelledby="headingOne">
                 <div class="panel-body">
                     <ul class="actionlist">
-                            <li class="clearfix row">
-                                Action Item Here
+                        <?php foreach ($items as $index => $item) : ?>
+                            <li class="clearfix row<?php echo $index%2;?>">
+                                <?php echo $item->action_name; ?>
                             </li>
+                        <?php endforeach;?>
                     </ul>
                 </div>
             </div>
         </div>
+    <?php endforeach;?>
 </div>
 
 <script>
