@@ -101,6 +101,89 @@ $user = JFactory::getUser();
 <?php endif; ?>
 </ul>
 <?php endforeach; ?>
+<hr>
+
+<h3 id="planner-title">Planned Actions (<?php echo 2?>)</h3>
+<h4>Total Points: <?php echo 125 ?></h4>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<div id="accordion_search_bar_container">
+    <input type="search"
+           id="accordion_search_bar"
+           placeholder="Search"/>
+    <button class="btn btn-success" id="expandall">Expand All</button>
+    <button class="btn btn-success" id="collapseall">Collapse All</button>
+</div>
+
+<div class="panel-group"
+     id="accordion"
+     role="tablist"
+     aria-multiselectable="true">
+        <div class="panel panel-success"
+             id="collapse_container">
+            <div class="panel-heading"
+                 role="tab"
+                 id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button"
+                       data-toggle="collapse"
+                       data-target='#collapse'
+                       href="javascript:void(0);"
+                       aria-expanded="true"
+                       aria-controls="collapse">
+                        Panel Title
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse"
+                 class="panel-collapse collapse"
+                 role="tabpanel"
+                 aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <ul class="actionlist">
+                            <li class="clearfix row">
+                                Action Item Here
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</div>
+
+<script>
+    (function(){
+        var searchTerm, panelContainerId;
+        var $ = jQuery;
+        $.expr[':'].containsCaseInsensitive = function (n, i, m) {
+            return jQuery(n).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+        };
+
+        $('#accordion_search_bar').on('change keyup paste click', function () {
+            searchTerm = $(this).val();
+            $('#accordion > .panel').each(function () {
+                panelContainerId = '#' + $(this).attr('id');
+                $(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
+                $(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show();
+            });
+            $('.actionlist li').find(':not(:containsCaseInsensitive(' + searchTerm + '))').each(function() {
+                $(this).parent().css('display', 'none');
+            })
+            $('.actionlist li').find(':containsCaseInsensitive(' + searchTerm + ')').each(function() {
+                $(this).parent().css('display', 'block');
+            })
+        });
+        $('#expandall').click(function() {
+            $('#accordion .collapse').collapse('show');
+        });
+        $('#collapseall').click(function() {
+            $('#accordion .collapse').collapse('hide');
+        });
+    }());
+</script>
 
 
 <script>

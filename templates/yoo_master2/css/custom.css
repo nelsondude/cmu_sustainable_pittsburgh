@@ -1870,3 +1870,7 @@ form.register > .fieldset em{
 .panel-title a {
 	display: block;
 }
+
+#planned_actions {
+	text-align: right;
+}

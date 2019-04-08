@@ -29,6 +29,13 @@ foreach ($this->items as $i => $item) {
 }
 //var_dump($grouped);
 
+require_once(JPATH_ROOT . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_gwc' . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'gwc.php');
+gwcHelper::getCompanies();
+$user = JFactory::getUser();
+$this->data->companyid = gwcHelper::getCompanyByUser($user->id);
+$this->data->organization = gwcHelper::getCompanyNameByUser($user->id);
+$company_options = gwcHelper::getTypesSizes();
+
 if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
 
 ?>
@@ -45,6 +52,12 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
            placeholder="Search"/>
     <button class="btn btn-success" id="expandall">Expand All</button>
     <button class="btn btn-success" id="collapseall">Collapse All</button>
+</div>
+
+<div id="planned_actions">
+    <a href="<?php echo JRoute::_('index.php?option=com_gwc&view=companies&id='.$this->data->companyid.'#planner-title');?>">
+        <strong>Planned Actions (<?php echo 10 ?>)</strong>
+    </a>
 </div>
 
 <div class="panel-group"
@@ -79,13 +92,14 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
                             <li class="clearfix row<?php echo $index%2;?>">
                                 <strong><?php echo $item->action_number;?></strong>
                                 <?php if ($ongoing): ?>
-                                    <a class=""
+                                    <a   style="width: unset;" class=""
                                        href="index.php?option=com_gwc&view=actions&layout=default&id=<?php echo $item->id; ?>">
                                         <?php echo $item->name; ?>
                                     </a>
                                 <?php else : ?>
                                     <?php echo $item->name; ?>
                                 <?php endif; ?>
+                                <span style="float: right;"><input type="checkbox"></span>
                             </li>
                         <?php endforeach;?>
                     </ul>
