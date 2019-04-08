@@ -16,6 +16,9 @@ foreach ($this->planned as $i => $item) {
 }
 
 ?>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 <h1><?php echo $this->info->name;?></h1>
 <h3>Points Awarded: <?php echo intval($this->info->points) + intval($this->info->legacy_points);?></h3>
 <hr>
@@ -156,13 +159,23 @@ foreach ($this->planned as $i => $item) {
                  role="tabpanel"
                  aria-labelledby="headingOne">
                 <div class="panel-body">
-                    <ul class="actionlist">
+                    <table class="planning-table">
+                        <tr>
+                            <th>Action</th>
+                            <th>Planned Deadline</th>
+                            <th class="planning-points">Points</th>
+                            <th class="planning-delete">Delete</th>
+                        </tr>
+
                         <?php foreach ($items as $index => $item) : ?>
-                            <li class="clearfix row<?php echo $index%2;?>">
-                                <?php echo $item->action_name; ?>
-                            </li>
+                            <tr id="tablerow<?php echo $item->action_id?>">
+                                <td><?php echo $item->action_name?></td>
+                                <td><?php echo $item->deadline?></td>
+                                <td class="planning-points"><?php echo $item->points?></td>
+                                <td class="planning-delete"><i class="fa fa-trash delete-button" aria-hidden="true" data-id="<?php echo $item->action_id?>"></i></td>
+                            </tr>
                         <?php endforeach;?>
-                    </ul>
+                    </table>
                 </div>
             </div>
         </div>
@@ -199,8 +212,6 @@ foreach ($this->planned as $i => $item) {
         });
     }());
 </script>
-
-<?php var_dump($this->planned) ?>
 
 
 <script>
@@ -253,5 +264,13 @@ $(document).ready(function(){
 			$(this).next(".uk-icon-check").remove();
 		}
 	});
+
+	$('.delete-button').click(function() {
+	    var id = $(this).data("id");
+        $.post('index.php?option=com_gwc&task=companies.removePlannedAction', {"action_id": id} )
+            .done(function(data){
+                $('#tablerow' + id).remove();
+            });
+    })
 });
 </script>

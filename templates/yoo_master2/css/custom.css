@@ -1862,6 +1862,17 @@ form.register > .fieldset em{
 	outline: 0;
 }
 
+.delete-button:hover {
+	cursor: pointer;
+}
+
+.planning-table {
+	width: 100%;
+}
+
+.planning-points, .planning-delete {
+	text-align: center;
+}
 
 .panel {
 	overflow: hidden;
