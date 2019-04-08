@@ -12,7 +12,8 @@
 			$this->actions	= $model->getCompanyActions();
 			$this->info	= $model->getCompanyInfo();
             $this->pagination = $pagenation;
+            $this->planned = $model->getPlannedActions();
             parent::display($tpl);
         }
     }
-?>  	
+?>

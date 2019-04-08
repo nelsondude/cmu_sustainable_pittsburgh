@@ -36,7 +36,67 @@ class GwcModelCompanies extends JModelList {
 			return $return;
 		}
 	}
-	
+
+	public function getPlannedActions() {
+        $user = JFactory::getUser();
+        $id = gwcHelper::getUserByCompany($user->id);
+        $db = JFactory::getDBO();
+        if(!$id) return null;
+
+        $query = $db->getQuery(true);
+        $query->select('p.id, p.action_id, a.name as action_name, p.deadline, ac.name as category');
+        $query->from('#__gwc_planned_actions p');
+        $query->join('INNER', '#__gwc_actions a ON a.id = p.action_id');
+        $query->join('INNER', '#__gwc_action_categories ac ON a.category = ac.id');
+        $query->where('p.company_id = '.$id);
+        $db->setQuery($query);
+        $results = $db->loadObjectList();
+        return $results;
+    }
+
+    public function updatePlannedAction($action_id, $deadline) {
+        $user = JFactory::getUser();
+        $id = gwcHelper::getUserByCompany($user->id);
+        $db = JFactory::getDBO();
+        if(!$id) return null;
+
+        $query = $db->getQuery(true);
+        $fields = array(
+            $db->quoteName('deadline') . ' = ' . $db->quote($deadline),
+        );
+
+        $conditions = array(
+            $db->quoteName('id') . ' = '.$action_id,
+            $db->quoteName('company_id') . ' = ' . $id
+        );
+
+        $query
+            ->update($db->quoteName('#__gwc_planned_actions'))
+            ->set($fields)
+            ->where($conditions);
+
+        $db->setQuery($query);
+        $result = $db->execute();
+    }
+
+    public function removePlannedAction($action_id) {
+        $user = JFactory::getUser();
+        $id = gwcHelper::getUserByCompany($user->id);
+        $db = JFactory::getDBO();
+        if(!$id) return null;
+
+        $query = $db->getQuery(true);
+        $conditions = array(
+            $db->quoteName('id') . ' = '.$action_id,
+            $db->quoteName('company_id') . ' = ' . $id
+        );
+        $query->delete($db->quoteName('#__gwc_planned_actions'));
+        $query->where($conditions);
+
+        $db->setQuery($query);
+        $result = $db->execute();
+    }
+
 	public function getCompanyInfo(){
 		$user = JFactory::getUser();
 		$id = gwcHelper::getUserByCompany($user->id);

@@ -102,6 +102,8 @@ $user = JFactory::getUser();
 </ul>
 <?php endforeach; ?>
 
+<?php var_dump($this->planned) ?>
+
 
 <script>
 $ = jQuery;
