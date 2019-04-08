@@ -23,9 +23,13 @@ usort($this->items,function($a,$b){
 });
 
 //Group by the item category
+$num_planned = 0;
 $grouped = array();
 foreach ($this->items as $i => $item) {
     $grouped[$item->category][] = $item;
+    if ($item->is_planned) {
+        $num_planned += 1;
+    }
 }
 //var_dump($grouped);
 
@@ -56,7 +60,7 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
 
 <div id="planned_actions">
     <a href="<?php echo JRoute::_('index.php?option=com_gwc&view=companies&id='.$this->data->companyid.'#planner-title');?>">
-        <strong>Planned Actions (<?php echo 10 ?>)</strong>
+        <strong>Planned Actions (<?php echo $num_planned ?>)</strong>
     </a>
 </div>
 
