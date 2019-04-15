@@ -169,7 +169,7 @@ foreach ($this->planned as $i => $item) {
                         </tr>
 
                         <?php foreach ($items as $index => $item) : ?>
-                            <tr id="tablerow<?php echo $item->action_id?>">
+                            <tr id="tablerow<?php echo $item->action_id?>" class="plan-row">
                                 <td><?php echo $item->action_number?></td>
                                 <td><?php echo $item->action_name?></td>
                                 <td><input class="form-control" type="date" value="<?php echo $item->deadline?>" data-id="<?php echo $item->action_id?>"></td>
@@ -185,34 +185,28 @@ foreach ($this->planned as $i => $item) {
 </div>
 
 <script>
-    (function(){
-        var searchTerm, panelContainerId;
-        var $ = jQuery;
-        $.expr[':'].containsCaseInsensitive = function (n, i, m) {
-            return jQuery(n).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
-        };
+    var searchTerm, panelContainerId;
+    var $ = jQuery;
+    $.expr[':'].containsCaseInsensitive = function (n, i, m) {
+        return jQuery(n).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+    };
 
-        $('#accordion_search_bar').on('change keyup paste click', function () {
-            searchTerm = $(this).val();
-            $('#accordion > .panel').each(function () {
-                panelContainerId = '#' + $(this).attr('id');
-                $(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
-                $(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show();
-            });
-            $('.actionlist li').find(':not(:containsCaseInsensitive(' + searchTerm + '))').each(function() {
-                $(this).parent().css('display', 'none');
-            })
-            $('.actionlist li').find(':containsCaseInsensitive(' + searchTerm + ')').each(function() {
-                $(this).parent().css('display', 'block');
-            })
+    $('#accordion_search_bar').on('change keyup paste click', function () {
+        const searchTerm = $(this).val();
+        $('#accordion > .panel').each(function () {
+            panelContainerId = '#' + $(this).attr('id');
+            $(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
+            $(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show();
         });
-        $('#expandall').click(function() {
-            $('#accordion .collapse').collapse('show');
-        });
-        $('#collapseall').click(function() {
-            $('#accordion .collapse').collapse('hide');
-        });
-    }());
+        $('.planning-table .plan-row:not(:containsCaseInsensitive(' + searchTerm + '))').css('display', 'none');
+        $('.planning-table .plan-row:containsCaseInsensitive(' + searchTerm + ')').css('display', 'table-row');
+    });
+    $('#expandall').click(function() {
+        $('#accordion .collapse').collapse('show');
+    });
+    $('#collapseall').click(function() {
+        $('#accordion .collapse').collapse('hide');
+    });
 </script>
 
 
