@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="filter">
+		<field
+			name="search"
+			type="text"
+			label="COM_CONTENT_FILTER_SEARCH_DESC"
+			hint="JSEARCH_FILTER"
+		/>
+		<field
+			name="c.active"
+			type="list"
+			label="Status"
+			description=""
+			onchange="this.form.submit();"
+			
+			>
+			<option value="">- Active Status -</option>
+			<option value="1">Active</option>
+			<option value="0">Inactive</option>
+		</field>
+		<field
+			name="ct.id"
+			type="list"
+			label="Type"
+			description=""
+			onchange="this.form.submit();"
+			>
+			<option value="">- Select Organization Type -</option>
+			<option value="1">Business</option>
+			<option value="2">Nonprofit</option>
+			<option value="3">University</option>
+			<option value="4">K-12</option>
+			<option value="6">Municipal</option>
+			<option value="5">Observer</option>
+		</field>
+		<field
+			name="cs.id"
+			type="list"
+			label="size"
+			description=""
+			onchange="this.form.submit();"
+			>
+			<option value="">- Select Organization Size -</option>
+			<option value="1">Large</option>
+			<option value="2">Medium</option>
+			<option value="3">Small</option>
+		</field>		
+	</fields>
+	<fields name="list">
+		<field
+			name="fullordering"
+			type="list"
+			label="COM_CONTENT_LIST_FULL_ORDERING"
+			description="COM_CONTENT_LIST_FULL_ORDERING_DESC"
+			onchange="this.form.submit();"
+			default="id ASC"
+			>
+			<option value="">JGLOBAL_SORT_BY</option>
+			<option value="c.name ASC">Name ascending</option>
+			<option value="c.name DESC">Name descending</option>
+			<option value="c.size ASC">Size ascending</option>
+			<option value="c.size DESC">Size descending</option>
+			<option value="c.type ASC">Type ascending</option>
+			<option value="c.type DESC">Type descending</option>
+		</field>
+		<field
+			name="limit"
+			type="limitbox"
+			class="input-mini"
+			default="25"
+			label="COM_CONTENT_LIST_LIMIT"
+			description="COM_CONTENT_LIST_LIMIT_DESC"
+			onchange="this.form.submit();"
+		/>
+	</fields>
+</form>

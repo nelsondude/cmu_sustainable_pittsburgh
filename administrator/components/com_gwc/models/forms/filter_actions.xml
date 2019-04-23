@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="filter">
+		<field
+			name="search"
+			type="text"
+			label="COM_CONTENT_FILTER_SEARCH_DESC"
+			hint="JSEARCH_FILTER"
+		/>
+		<field
+			name="category_id"
+			type="category"
+			label="JOPTION_FILTER_CATEGORY"
+			extension="com_gwc"
+			description="JOPTION_FILTER_CATEGORY_DESC"
+			onchange="this.form.submit();"
+			>
+			<option value="">JOPTION_SELECT_CATEGORY</option>
+		</field>
+		<field
+			name="cycle"
+			type="list"
+			label="Year"
+			description=""
+			onchange="this.form.submit();"
+			>
+			<option value="">- Select Year -</option>
+			<option value="2014">2014</option>
+			<option value="2015">2015</option>
+			<option value="2016">2016</option>
+		</field>
+	</fields>
+	<fields name="list">
+		<field
+			name="fullordering"
+			type="list"
+			label="COM_CONTENT_LIST_FULL_ORDERING"
+			description="COM_CONTENT_LIST_FULL_ORDERING_DESC"
+			onchange="this.form.submit();"
+			default="a.id DESC"
+			>
+			<option value="">JGLOBAL_SORT_BY</option>
+			<option value="a.action_number ASC">Action Number ascending</option>
+			<option value="a.action_number DESC">Action Number descending</option>
+			<option value="a.name ASC">Name ascending</option>
+			<option value="a.name DESC">Name descending</option>
+			<option value="ac.name ASC">JCATEGORY_ASC</option>
+			<option value="ac.name DESC">JCATEGORY_DESC</option>
+			<option value="a.points ASC">Point Value ascending</option>
+			<option value="a.points DESC">Point Value descending</option>
+		</field>
+		<field
+			name="start"
+			type="hidden"
+			class="input-mini"
+			default="0"
+			label="COM_CONTENT_LIST_LIMIT"
+			description="COM_CONTENT_LIST_LIMIT_DESC"
+			onchange="this.form.submit();"
+		/>		
+		<field
+			name="limit"
+			type="limitbox"
+			class="input-mini"
+			default="20"
+			label="COM_CONTENT_LIST_LIMIT"
+			description="COM_CONTENT_LIST_LIMIT_DESC"
+			onchange="this.form.submit();"
+		/>
+	</fields>
+</form>

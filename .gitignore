@@ -1,6 +1,24 @@
 # Ignore found at https://github.com/github/gitignore/blob/master/Joomla.gitignore
 /.htaccess
-/administrator
+/administrator/*
+!/administrator/components
+administrator/components/*
+!/administrator/components/com_gwc
+/administrator/components/com_gwc/*
+!/administrator/components/com_gwc/controllers
+!/administrator/components/com_gwc/models
+!/administrator/components/com_gwc/views
+!/administrator/components/com_gwc/controller.php
+!/administrator/components/com_gwc/gwc.xml
+/administrator/components/com_gwc/controllers
+!/administrator/components/com_gwc/controllers/planned.php
+/administrator/components/com_gwc/models
+!/administrator/components/com_gwc/models/planned.php
+!/administrator/components/com_gwc/models/forms
+/administrator/components/com_gwc/models/forms
+!/administrator/components/com_gwc/models/forms/filter_planned.xml
+/administrator/components/com_gwc/views
+!/administrator/components/com_gwc/views/planned
 /cache/*
 /bin/*
 /cli/*
