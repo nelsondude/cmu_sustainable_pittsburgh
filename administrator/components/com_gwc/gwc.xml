@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.3.0" method="upgrade">
+        <name>com_gwc</name>
+        <!-- The following elements are optional and free of formatting constraints -->
+        <creationDate>Sept 2013</creationDate>
+        <author>Brian Hackett</author>
+        <authorEmail>brian@openarc.net</authorEmail>
+        <authorUrl></authorUrl>
+        <copyright></copyright>
+        <license></license>
+        <version>0.1</version>
+        <description>COM_GWC_DESC</description>
+        
+        <files folder="site">                
+                <filename>gwc.php</filename>
+				<folder>controllers</folder>
+				<folder>models</folder>
+				<folder>views</folder>
+        </files>
+        
+        <languages>
+            <language tag="en-GB">language/en-GB/en-GB.com_gwc.ini</language>
+            <language tag="en-GB">language/en-GB/en-GB.com_gwc.sys.ini</language>
+        </languages>
+        
+        <administration>
+				<menu img="images/header/avatar2.jpg" view="submissions">COM_GWC</menu>                
+                <submenu>
+                    <menu view="actions" link="option=com_gwc&amp;view=actions">COM_GWC_ADMIN_MENU_ACTIONS</menu>
+					<menu view="companies" link="option=com_gwc&amp;view=categories">COM_GWC_ADMIN_MENU_CATEGORIES</menu>
+                    <menu view="companies" link="option=com_gwc&amp;view=companies">COM_GWC_ADMIN_MENU_COMPANIES</menu>
+                    <menu view="submissions" link="option=com_gwc&amp;view=submissions">COM_GWC_ADMIN_MENU_SUBMISSIONS</menu>
+                    <menu view="planned" link="option=com_gwc&amp;view=planned">COM_GWC_ADMIN_MENU_PLANNED</menu>
+                </submenu>
+                <files folder="admin">
+					<filename>gwc.php</filename>
+					<filename>controller.php</filename>
+					<filename>gwc.xml</filename>
+					<filename>config.xml</filename>
+					<folder>controllers</folder>
+					<folder>models</folder>
+					<folder>views</folder>					
+                </files>
+                <languages>
+                    <language tag="en-GB">language/en-GB/en-GB.com_gwc.ini</language>
+                    <language tag="en-GB">language/en-GB/en-GB.com_gwc.sys.ini</language>
+                </languages>
+        </administration>
+</extension>
