@@ -38,5 +38,4 @@ class GwcModelPlanned extends JModelList {
         parent::populateState('id', 'asc');
         return $query;
     }
-
 }
