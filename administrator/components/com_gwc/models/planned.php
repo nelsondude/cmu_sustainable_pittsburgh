@@ -31,6 +31,10 @@ class GwcModelPlanned extends JModelList {
         $query->from('#__gwc_planned_actions p');
         $query->join('INNER', '#__gwc_companies co ON p.company_id = co.id');
         $query->join('INNER', '#__gwc_actions a ON p.action_id = a.id');
+        if($filter['search']){
+            $search = $db->quote('%' . $db->escape($filter['search'], true) . '%');
+            $query->where('(CONCAT(a.action_number, " - ", a.name) LIKE ' . $search . ') || (co.name LIKE ' . $search . ')');
+        }
         parent::populateState('id', 'asc');
         return $query;
     }
