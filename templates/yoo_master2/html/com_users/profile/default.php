@@ -23,23 +23,32 @@ $this->data->companyid = gwcHelper::getCompanyByUser($this->data->id);
 $this->data->organization = gwcHelper::getCompanyNameByUser($this->data->id);
 $company_options = gwcHelper::getTypesSizes();
 ?>
+<style>
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
 
 <div id="system">
 
-	<?php if ($this->params->get('show_page_heading')) : ?>
-	<h1 class="title"><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
-	<?php endif; ?>
+    <?php if ($this->params->get('show_page_heading')) : ?>
+        <h1 class="title"><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
+    <?php endif; ?>
 
-	<?php if($this->data->companyid):?>
-	<h3>View Organization information for 
-		<a href="<?php echo JRoute::_('index.php?option=com_gwc&view=companies&id='.$this->data->companyid);?>">
-			<?php echo $this->data->organization->name;?>
-		</a>
-	</h3>
-	<?php endif; ?>	
-	
-	
-		<?php
+    <?php if ($this->data->companyid): ?>
+        <br>
+        <h3>My Organization Information:</h3>
+        <h3 style="margin-bottom: 10px;">
+            <?php echo $this->data->organization->name; ?>
+        </h3>
+        <a style="font-size: 15px;" href="<?php echo JRoute::_('index.php?option=com_gwc&view=companies&id=' . $this->data->companyid); ?>">
+            Click here to view organization information
+        </a>
+    <?php endif; ?>
+    <hr>
+    <h3>My User Information</h3>
+    <form>
+        <?php
 
 		$fieldsets = $this->form->getFieldsets();
 
