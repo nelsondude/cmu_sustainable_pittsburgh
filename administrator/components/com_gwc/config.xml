@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset
+		name="competition"
+		label="GWC Competition"
+		description="">
+
+		<field
+			name="current_cycle" 
+			label="Current Cycle"
+			type="list"
+			description="Current Competition Cycle (by year)"
+			extension="com_gwc">
+			<option value="2014">2014</option>
+			<option value="2015">2015</option>
+			<option value="2016">2016</option>
+			<option value="2018">2018</option>
+		</field>
+		<field
+			name="startdate"
+			label = "Start Date"
+			type="calendar"
+			description="Competition Start date."
+			extension="com_gwc"
+			filter="user_utc"
+			format="%Y-%m-%d %H:%M:%S"
+			size="22"			
+		/>
+		<field
+			name="enddate"
+			label = "End Date"
+			type="calendar"
+			description="Competition End date."
+			extension="com_gwc"
+			filter="user_utc"
+			format="%Y-%m-%d %H:%M:%S"
+			size="22"
+		/>		
+		<field
+			name="admin_email" 
+			label="Email to receive notifications of submittals"
+			type="text"
+			extension="com_gwc" />
+		<field
+			name="past_cycles" 
+			label="Past Competitions"
+			type="hidden"
+			extension="com_gwc" />			
+	</fieldset>
+		
+</config>

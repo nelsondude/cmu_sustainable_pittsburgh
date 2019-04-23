@@ -1,6 +1,9 @@
 # Ignore found at https://github.com/github/gitignore/blob/master/Joomla.gitignore
 /.htaccess
-/administrator
+/administrator/*
+!/administrator/components
+administrator/components/*
+!/administrator/components/com_gwc
 /cache/*
 /bin/*
 /cli/*
