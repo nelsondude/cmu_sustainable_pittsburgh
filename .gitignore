@@ -13,7 +13,7 @@ administrator/components/*
 /administrator/components/com_gwc/controllers
 !/administrator/components/com_gwc/controllers/planned.php
 /administrator/components/com_gwc/models
-/administrator/components/com_gwc/models/planned.php
+!/administrator/components/com_gwc/models/planned.php
 !/administrator/components/com_gwc/models/forms
 /administrator/components/com_gwc/models/forms
 !/administrator/components/com_gwc/models/forms/filter_planned.xml
