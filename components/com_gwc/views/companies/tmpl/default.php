@@ -5,7 +5,20 @@ $year = gwcHelper::getCycle();
 $user = JFactory::getUser();
 //die('<pre>'.print_r($this->actions,1));
 //die('<pre>'.print_r($this,1));
+
+//Group by the item category
+$number_planned = count($this->planned);
+$num_points = 0;
+$grouped = array();
+foreach ($this->planned as $i => $item) {
+    $grouped[$item->category][] = $item;
+    $num_points = (int)$item->points;
+}
+
 ?>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 <h1><?php echo $this->info->name;?></h1>
 <h3>Points Awarded: <?php echo intval($this->info->points) + intval($this->info->legacy_points);?></h3>
 <hr>
@@ -103,8 +116,8 @@ $user = JFactory::getUser();
 <?php endforeach; ?>
 <hr>
 
-<h3 id="planner-title">Planned Actions (<?php echo 2?>)</h3>
-<h4>Total Points: <?php echo 125 ?></h4>
+<h3 id="planner-title">Planned Actions (<?php echo $number_planned?>)</h3>
+<h4>Total Points: <?php echo $num_points ?></h4>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -123,69 +136,78 @@ $user = JFactory::getUser();
      id="accordion"
      role="tablist"
      aria-multiselectable="true">
+    <?php foreach ($grouped as $category => $items) :?>
+        <?php $stripped_category = str_replace(' ', '', $category) ?>
         <div class="panel panel-success"
-             id="collapse_container">
+             id="collapse<?php echo $stripped_category;?>_container">
             <div class="panel-heading"
                  role="tab"
                  id="headingOne">
                 <h4 class="panel-title">
                     <a role="button"
                        data-toggle="collapse"
-                       data-target='#collapse'
+                       data-target='#collapse<?php echo $stripped_category?>'
                        href="javascript:void(0);"
                        aria-expanded="true"
-                       aria-controls="collapse">
-                        Panel Title
+                       aria-controls="collapse<?php echo $stripped_category;?>">
+                        <?php echo $category ?>
                     </a>
                 </h4>
             </div>
-            <div id="collapse"
-                 class="panel-collapse collapse"
+            <div id="collapse<?php echo $stripped_category;?>"
+                 class="panel-collapse collapse in"
                  role="tabpanel"
                  aria-labelledby="headingOne">
                 <div class="panel-body">
-                    <ul class="actionlist">
-                            <li class="clearfix row">
-                                Action Item Here
-                            </li>
-                    </ul>
+                    <table class="planning-table">
+                        <tr>
+                            <th>#</th>
+                            <th>Action</th>
+                            <th>Planned Deadline</th>
+                            <th class="planning-points">Points</th>
+                            <th class="planning-delete">Delete</th>
+                        </tr>
+
+                        <?php foreach ($items as $index => $item) : ?>
+                            <tr id="tablerow<?php echo $item->action_id?>" class="plan-row">
+                                <td><?php echo $item->action_number?></td>
+                                <td><?php echo $item->action_name?></td>
+                                <td><input class="form-control" type="date" value="<?php echo $item->deadline?>" data-id="<?php echo $item->action_id?>"></td>
+                                <td class="planning-points"><?php echo $item->points?></td>
+                                <td class="planning-delete"><i class="fa fa-trash delete-button" aria-hidden="true" data-id="<?php echo $item->action_id?>"></i></td>
+                            </tr>
+                        <?php endforeach;?>
+                    </table>
                 </div>
             </div>
         </div>
+    <?php endforeach;?>
 </div>
 
 <script>
-    (function(){
-        var searchTerm, panelContainerId;
-        var $ = jQuery;
-        $.expr[':'].containsCaseInsensitive = function (n, i, m) {
-            return jQuery(n).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
-        };
+    var searchTerm, panelContainerId;
+    var $ = jQuery;
+    $.expr[':'].containsCaseInsensitive = function (n, i, m) {
+        return jQuery(n).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+    };
 
-        $('#accordion_search_bar').on('change keyup paste click', function () {
-            searchTerm = $(this).val();
-            $('#accordion > .panel').each(function () {
-                panelContainerId = '#' + $(this).attr('id');
-                $(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
-                $(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show();
-            });
-            $('.actionlist li').find(':not(:containsCaseInsensitive(' + searchTerm + '))').each(function() {
-                $(this).parent().css('display', 'none');
-            })
-            $('.actionlist li').find(':containsCaseInsensitive(' + searchTerm + ')').each(function() {
-                $(this).parent().css('display', 'block');
-            })
+    $('#accordion_search_bar').on('change keyup paste click', function () {
+        const searchTerm = $(this).val();
+        $('#accordion > .panel').each(function () {
+            panelContainerId = '#' + $(this).attr('id');
+            $(panelContainerId + ':not(:containsCaseInsensitive(' + searchTerm + '))').hide();
+            $(panelContainerId + ':containsCaseInsensitive(' + searchTerm + ')').show();
         });
-        $('#expandall').click(function() {
-            $('#accordion .collapse').collapse('show');
-        });
-        $('#collapseall').click(function() {
-            $('#accordion .collapse').collapse('hide');
-        });
-    }());
+        $('.planning-table .plan-row:not(:containsCaseInsensitive(' + searchTerm + '))').css('display', 'none');
+        $('.planning-table .plan-row:containsCaseInsensitive(' + searchTerm + ')').css('display', 'table-row');
+    });
+    $('#expandall').click(function() {
+        $('#accordion .collapse').collapse('show');
+    });
+    $('#collapseall').click(function() {
+        $('#accordion .collapse').collapse('hide');
+    });
 </script>
-
-<?php var_dump($this->planned) ?>
 
 
 <script>
@@ -238,5 +260,25 @@ $(document).ready(function(){
 			$(this).next(".uk-icon-check").remove();
 		}
 	});
+
+	$('input[type="date"]').change(function() {
+	    var deadline = $(this).val();
+	    var id = $(this).data("id");
+	    $.post('index.php?option=com_gwc&task=companies.updatePlannedAction', {"action_id": id, "deadline": deadline})
+            .done(function(data) {
+                console.log('done');
+            })
+    });
+
+	$('.delete-button').click(function() {
+        var del = window.confirm("Are you sure you want to remove this action from your planner?");
+        if (!del) return;
+
+	    var id = $(this).data("id");
+        $.post('index.php?option=com_gwc&task=companies.removePlannedAction', {"action_id": id} )
+            .done(function(data){
+                $('#tablerow' + id).remove();
+            });
+    })
 });
 </script>

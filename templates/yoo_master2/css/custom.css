@@ -1291,6 +1291,7 @@ form[style*="block"] + .upload-new{
 	padding:15px 20px;
 	
 	transition:background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	font-size: 16px !important;
 }
 .uk-nav > li > a:hover{
 	background-color:#65923E;
@@ -1854,6 +1855,10 @@ form.register > .fieldset em{
 	border-radius: 50px;
 }
 
+#accordion_search_bar_container button:focus {
+	outline: 0;
+}
+
 #accordion_search_bar {
 	flex-grow: 1;
 	padding: 7px 10px;
@@ -1862,6 +1867,25 @@ form.register > .fieldset em{
 	outline: 0;
 }
 
+.delete-button:hover {
+	cursor: pointer;
+}
+
+.planning-table {
+	width: 100%;
+}
+
+.planning-points, .planning-delete {
+	text-align: center;
+}
+
+.planning-table td:not(:nth-child(2)) {
+	width: 75px;
+}
+
+.planning-table td, .planning-table th {
+	padding: 8px;
+}
 
 .panel {
 	overflow: hidden;

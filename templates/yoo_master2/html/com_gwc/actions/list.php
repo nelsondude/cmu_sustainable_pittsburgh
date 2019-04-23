@@ -23,9 +23,13 @@ usort($this->items,function($a,$b){
 });
 
 //Group by the item category
+$num_planned = 0;
 $grouped = array();
 foreach ($this->items as $i => $item) {
     $grouped[$item->category][] = $item;
+    if ($item->is_planned) {
+        $num_planned += 1;
+    }
 }
 //var_dump($grouped);
 
@@ -56,7 +60,7 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
 
 <div id="planned_actions">
     <a href="<?php echo JRoute::_('index.php?option=com_gwc&view=companies&id='.$this->data->companyid.'#planner-title');?>">
-        <strong>Planned Actions (<?php echo 10 ?>)</strong>
+        <strong>Planned Actions (<span id="num_planned"><?php echo $num_planned ?></span>)</strong>
     </a>
 </div>
 
@@ -99,7 +103,7 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
                                 <?php else : ?>
                                     <?php echo $item->name; ?>
                                 <?php endif; ?>
-                                <span style="float: right;"><input type="checkbox"></span>
+                                <span style="float: right;"><input type="checkbox" <?php echo $item->is_planned==1 ? 'checked' : '' ?> data-id="<?php echo $item->id?>"></span>
                             </li>
                         <?php endforeach;?>
                     </ul>
@@ -138,5 +142,28 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
             $('#accordion .collapse').collapse('hide');
         });
     }());
+</script>
+
+<script>
+    var $ = jQuery;
+    $('input:checkbox').change(
+        function(){
+            var id = $(this).data("id");
+            if ($(this).is(':checked')) {
+                // now it is checked, was not checkec
+                $.post('index.php?option=com_gwc&task=companies.addPlannedAction', {"action_id": id} )
+                    .done(function(data){
+                        var currentValue = parseInt($("#num_planned").text(),10);
+                        $('#num_planned').text(currentValue + 1);
+                    });
+            } else {
+                // now it is not checked, was checked
+                $.post('index.php?option=com_gwc&task=companies.removePlannedAction', {"action_id": id} )
+                    .done(function(data){
+                        var currentValue = parseInt($("#num_planned").text(),10);
+                        $('#num_planned').text(currentValue - 1);
+                    });
+            }
+        });
 </script>
 

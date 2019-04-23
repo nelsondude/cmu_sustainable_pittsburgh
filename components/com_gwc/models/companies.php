@@ -44,7 +44,7 @@ class GwcModelCompanies extends JModelList {
         if(!$id) return null;
 
         $query = $db->getQuery(true);
-        $query->select('p.id, p.action_id, a.name as action_name, p.deadline, ac.name as category');
+        $query->select('p.id, p.action_id, a.name as action_name, p.deadline, ac.name as category, a.points as points, a.action_number');
         $query->from('#__gwc_planned_actions p');
         $query->join('INNER', '#__gwc_actions a ON a.id = p.action_id');
         $query->join('INNER', '#__gwc_action_categories ac ON a.category = ac.id');
@@ -66,11 +66,11 @@ class GwcModelCompanies extends JModelList {
 
         $query = $db->getQuery(true);
         $fields = array(
-            $db->quoteName('deadline') . ' = ' . $db->quote($deadline),
+            $db->quoteName('deadline') . ' = ' . ($deadline ? $db->quote($deadline) : 'NULL'),
         );
 
         $conditions = array(
-            $db->quoteName('id') . ' = '.$action_id,
+            $db->quoteName('action_id') . ' = '.$action_id,
             $db->quoteName('company_id') . ' = ' . $id
         );
 
@@ -91,7 +91,7 @@ class GwcModelCompanies extends JModelList {
 
         $query = $db->getQuery(true);
         $conditions = array(
-            $db->quoteName('id') . ' = '.$action_id,
+            $db->quoteName('action_id') . ' = '.$action_id,
             $db->quoteName('company_id') . ' = ' . $id
         );
         $query->delete($db->quoteName('#__gwc_planned_actions'));

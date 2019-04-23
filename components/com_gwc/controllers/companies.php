@@ -1,5 +1,5 @@
 <?php
-die("TEST");
+//die("TEST");
 defined("_JEXEC") or die('Restricted access');
 jimport('joomla.application.component.controlleradmin');
 class GwcControllerCompanies extends JControllerAdmin {
