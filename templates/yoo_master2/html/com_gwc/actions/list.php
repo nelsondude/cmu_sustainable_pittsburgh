@@ -96,14 +96,18 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
                             <li class="clearfix row<?php echo $index%2;?>">
                                 <strong><?php echo $item->action_number;?></strong>
                                 <?php if ($ongoing): ?>
-                                    <a   style="width: unset;" class=""
+                                    <a style="width: unset;" class="mytooltip"
                                        href="index.php?option=com_gwc&view=actions&layout=default&id=<?php echo $item->id; ?>">
                                         <?php echo $item->name; ?>
+                                        <span class="tooltiptext">Click to submit.</span>
                                     </a>
                                 <?php else : ?>
                                     <?php echo $item->name; ?>
                                 <?php endif; ?>
-                                <span style="float: right;"><input type="checkbox" <?php echo $item->is_planned==1 ? 'checked' : '' ?> data-id="<?php echo $item->id?>"></span>
+                                <span style="float: right;">
+                                    <input type="checkbox" <?php echo $item->is_planned==1 ? 'checked' : '' ?>
+                                           data-id="<?php echo $item->id?>"
+                                           data-action="<?php echo $item->action_number;?>"></span>
                             </li>
                         <?php endforeach;?>
                     </ul>
@@ -112,6 +116,7 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
         </div>
     <?php endforeach;?>
 </div>
+<div id="snackbar">Some text some message..</div>
 
 <script>
     (function(){
@@ -145,23 +150,36 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
 </script>
 
 <script>
+    function show_toast(message, color) {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        x.innerHTML = message;
+        x.style.background = color;
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 8000);
+    }
+
     var $ = jQuery;
     $('input:checkbox').change(
         function(){
             var id = $(this).data("id");
+            const action = $(this).data("action");
             if ($(this).is(':checked')) {
                 // now it is checked, was not checkec
                 $.post('index.php?option=com_gwc&task=companies.addPlannedAction', {"action_id": id} )
                     .done(function(data){
                         var currentValue = parseInt($("#num_planned").text(),10);
                         $('#num_planned').text(currentValue + 1);
+                        const message = "Added action <b>" + action + "</b> to your planned actions. You can view these at your company profile page.";
+                        show_toast(message, "#0B6623");
                     });
             } else {
                 // now it is not checked, was checked
                 $.post('index.php?option=com_gwc&task=companies.removePlannedAction', {"action_id": id} )
                     .done(function(data){
                         var currentValue = parseInt($("#num_planned").text(),10);
+                        const message = "Deleted action <b>" + action + "</b> from your planned actions. You can view these at your company profile page.";
                         $('#num_planned').text(currentValue - 1);
+                        show_toast(message, "#FF0000");
                     });
             }
         });
