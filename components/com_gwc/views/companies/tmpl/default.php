@@ -117,7 +117,6 @@ foreach ($this->planned as $i => $item) {
 <hr>
 
 <h3 id="planner-title">Planned Actions (<?php echo $number_planned?>)</h3>
-<h4>Total Points: <?php echo $num_points ?></h4>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
