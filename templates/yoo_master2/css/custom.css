@@ -1934,3 +1934,37 @@ form.register > .fieldset em{
 	from {bottom: 30px; opacity: 1;}
 	to {bottom: 0; opacity: 0;}
 }
+
+.mytooltip {
+	position: relative;
+	display: inline-block;
+}
+
+.mytooltip .tooltiptext {
+	width: 120px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 100;
+	top: -5px;
+	left: 105%;
+	opacity: 0;
+	transition: opacity .5s;
+}
+
+.mytooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 100%;
+	margin-top: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent black transparent transparent;
+}
+.mytooltip:hover .tooltiptext {
+	opacity: 1;
+}

@@ -96,9 +96,10 @@ if($_GET["debugActionsObj"]) echo "<pre>".print_r($this->items,1)."</pre>";
                             <li class="clearfix row<?php echo $index%2;?>">
                                 <strong><?php echo $item->action_number;?></strong>
                                 <?php if ($ongoing): ?>
-                                    <a   style="width: unset;" class=""
+                                    <a style="width: unset;" class="mytooltip"
                                        href="index.php?option=com_gwc&view=actions&layout=default&id=<?php echo $item->id; ?>">
                                         <?php echo $item->name; ?>
+                                        <span class="tooltiptext">Click to submit.</span>
                                     </a>
                                 <?php else : ?>
                                     <?php echo $item->name; ?>
