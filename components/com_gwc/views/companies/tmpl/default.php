@@ -170,7 +170,11 @@ foreach ($this->planned as $i => $item) {
                         <?php foreach ($items as $index => $item) : ?>
                             <tr id="tablerow<?php echo $item->action_id?>" class="plan-row">
                                 <td><?php echo $item->action_number?></td>
-                                <td><?php echo $item->action_name?></td>
+                                <td>
+                                    <a href="index.php?option=com_gwc&view=actions&layout=default&id=<?php echo $item->action_id; ?>" target="_blank">
+                                        <?php echo $item->action_name?>
+                                    </a>
+                                </td>
                                 <td><input class="form-control" type="date" value="<?php echo $item->deadline?>" data-id="<?php echo $item->action_id?>"></td>
                                 <td class="planning-points"><?php echo $item->points?></td>
                                 <td class="planning-delete"><i class="fa fa-trash delete-button" aria-hidden="true" data-id="<?php echo $item->action_id?>"></i></td>
