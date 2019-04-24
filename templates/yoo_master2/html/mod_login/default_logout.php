@@ -10,6 +10,9 @@
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.keepalive');
+require_once(JPATH_ROOT . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_gwc' . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'gwc.php');
+$id = gwcHelper::getCompanyByUser($user->id);
+
 $prop = "";
 
 ?>
@@ -27,7 +30,7 @@ $prop = "";
 			} else : {
 			    $prop = 'username';
 			} endif; ?>
-            <a href="index.php/my-profile" id="profile-link"><?php echo htmlspecialchars($user->get($prop));?></a>
+            <a href="<?php echo JRoute::_('index.php?option=com_gwc&view=companies&id=' . $id); ?>" id="profile-link"><?php echo htmlspecialchars($user->get($prop));?></a>
 		</div>
 		<?php endif; ?>
 
